@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단어학습(모드선택)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .mode-option {
+            margin-bottom: 10px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            margin-top: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>모드를 선택하세요</h1>
+    <form id="modeForm">
+        <div class="mode-option">
+            <input type="radio" id="example" name="mode" value="example" required>
+            <label for="example">예문</label>
+        </div>
+        <div class="mode-option">
+            <input type="radio" id="meaning" name="mode" value="meaning" required>
+            <label for="meaning">뜻</label>
+        </div>
+        <div class="mode-option">
+            <input type="radio" id="combined" name="mode" value="combined" required>
+            <label for="combined">복합</label>
+        </div>
+  
+        <button type="submit">시작하기</button>
+    </form>
+  
+    <script>
+        document.getElementById("modeForm").onsubmit = function(event) {
+            event.preventDefault(); // 폼 제출의 기본 동작을 막음
+            
+            // 선택된 모드 값 가져오기
+            const selectedMode = document.querySelector('input[name="mode"]:checked').value;
+  
+            // 선택된 모드에 맞는 HTML 파일로 리디렉션
+            if (selectedMode === "example") {
+                window.location.href = "study(sentence).html"; // 예문 파일로 이동
+            } else if (selectedMode === "meaning") {
+                window.location.href = "study(meaning).html"; // 뜻 파일로 이동
+            } else if (selectedMode === "combined") {
+                window.location.href = "study(complex).html"; // 복합 파일로 이동
+            }
+        };
+    </script>
+  </body>
+</html>
